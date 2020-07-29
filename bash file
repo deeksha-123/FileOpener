@@ -1,0 +1,28 @@
+#! /bin/bash
+$1
+if [ -e $1 ]
+then
+    x=$(echo $1 | cut -d'.' -f 2)
+     if [ "$x" == "JPG" ] || [ "$x" == "jpg" ] || [ "$x" == "PNG" ] || [ "$x" == "png" ] || [ "$x" == "BMP" ] || [ "$x" == "bmp" ] || [ "$x" == "pjpeg" ] || [ "$x" == "tif" ] 
+      then
+    eog $1
+    elif [ "$x" == "mp3" ] || [ "$x" == "wav" ] || [ "$x" == "mp4" ] || [ "$x" == "flv" ] || [ "$x" == "m4v" ] || [ "$x" == "avi" ] 
+   then
+   mplayer $1
+   elif [ "$x" == "pdf" ] || [ "$x" == "oxps" ] || [ "$x" == "gzpdf"]
+   then
+  evince $1
+  elif [ "$x" == "py" ] || [ "$x" == "cpp" ] || [ "$x" == "c" ] || [ "$x" == "java" ] || [ "$x" == "txt" ] || [ "$x" == "sh" ] || [ "$x" == "sql" ] || [ "$x" == "h" ] || [ "$x" == "xml" ] 
+   then
+   gedit $1
+    elif [ "$x" == "html" ] 
+    then
+    lynx -dump $1
+elif [ "$x" == "csv" ] || [ "$x" == "odt" ]
+then
+libreoffice $1
+
+    fi
+else 
+echo "error"
+fi
